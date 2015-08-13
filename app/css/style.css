@@ -1,3 +1,8 @@
+html,
+body {
+	height: 100%;
+}
+
 body {
 	background-color: #e6eaee;
 }
@@ -9,6 +14,7 @@ body {
 	position: relative;
 	width: 348px;
 	height: 500px;
+	top: 50%;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #fff;
@@ -17,6 +23,35 @@ body {
 	   -moz-border-radius: 10px;
 			border-radius: 10px;
 	overflow: hidden;
+	-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		 -o-transform: translateY(-50%);
+			transform: translateY(-50%);
+}
+
+.player .la-line-scale {
+	display: none;
+}
+
+.player__loading:after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 348px;
+	height: 500px;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, .8);
+}
+
+.player__loading .la-line-scale {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -40px;
+	margin-top: -32px;
+	z-index: 2;
 }
 
 .player__top {
@@ -75,6 +110,10 @@ body {
 	overflow: hidden;
 }
 
+.player__inactive {
+	pointer-events: none;
+}
+
 .player__toggle_button {
 	position: absolute;
 	display: none;
@@ -118,6 +157,7 @@ body {
 		 -o-transform: translateY(-50%);
 			transform: translateY(-50%);
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .player_upload {
@@ -127,10 +167,13 @@ body {
 .player__button_upload {
 	display: block;
 	position: absolute;
-	left: 100%;
+	width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
 }
 
-.player__button_upload:before {
+/*.player__button_upload:before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -139,7 +182,7 @@ body {
 	top: -2px;
 	left: -65px;
 	cursor: pointer;
-}
+}*/
 
 
 
@@ -167,6 +210,20 @@ body {
 	margin-top: 50px;
 	overflow: hidden;
 	opacity: 0.8;
+}
+
+.player__filename {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	font-size: 14px;
+    line-height: 14px;
+	text-align: center;
+	z-index: 1;
+	-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		 -o-transform: translateY(-50%);
+			transform: translateY(-50%);
 }
 
 .player__wave {
