@@ -8,9 +8,14 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title></title>
-		<!-- build:css css/main.css -->
-		<link href="css/main.css" rel="stylesheet">
-		<!-- endbuild -->
+		<!-- build:css css/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css css/main.css -->
+    <link href="css/main.css" rel="stylesheet">
+    <!-- endbuild -->
 
  
 		<!--[if lt IE 9]>
@@ -19,10 +24,6 @@
 		<![endif]-->
 		<!--[if IE 8]><html lang="ru-RU" class="ie8"><![endif]-->
 		<style>
-body {
-  font-family: "Droid Sans", Arial, sans-serif;
-  padding: 2em;
-}
 button {
   vertical-align: middle;
   background: -webkit-gradient(linear, 0% 40%, 0% 70%, from(#F9F9F9), to(#E3E3E3));
@@ -45,6 +46,7 @@ button {
   font-weight: 700;
   font-size: 10pt;
 }
+
 button:not(:disabled):hover {
   border-color: black;
 }
@@ -56,11 +58,12 @@ button:not(:disabled):active {
   background: -o-linear-gradient(#E3E3E3 40%, #F9F9F9 70%);
   background: linear-gradient(#E3E3E3 40%, #F9F9F9 70%);
 }
-.button {
+/*.button {
   height: 30px;
   width: 120px;
   vertical-align: middle;
-}
+}*/
+/*
 .button::-webkit-file-upload-button,
 .button::-moz-file-upload-button {
   visibility: hidden;
@@ -86,25 +89,49 @@ button:not(:disabled):active {
 }
 .button:active:before {
   background: -webkit-gradient(linear, 0% 40%, 0% 70%, from(#E3E3E3), to(#F9F9F9));
-}
+}*/
 </style>
 	</head>
 	<body>
-		<!-- <audio>
-			<source src="kalimba.mp3" type="audio/mpeg">
-			<source src="kalimba.ogg" type="audio/ogg">
-			Your browser does not support the audio element.
-		</audio> -->
-		<p>Simple example of using the Web Audio API to load a sound file and start playing it on user-click.</p>
-  		<input type="file" class="button">
-  		<button onclick="playSound()" disabled>Start</button>
-  		<button onclick="stopSound()" disabled>Stop</button>
+		<!-- <p>Simple example of using the Web Audio API to load a sound file and start playing it on user-click.</p>
+  		<input type="file" class="button"> -->
+  		
   		<div id="filename"></div>
+        <br>
+        <div id="meta"></div>
+        <br>
+        
+
+
+
+        <div class="player">
+            <div class="player__top">
+                <div class="player__meta player__name" id="meta-name"></div>
+                <div class="player__meta player__artist" id="meta-artist"></div>
+                <div class="player__meta player__album" id="meta-album"></div>
+
+                <div class="player__wave_wrapper">
+                    <div id="wave" class="player__wave"></div>
+                </div>
+            </div>
+            <div class="player__bottom">
+                <div class="player__button player_upload" title="Open file">
+                    <input type="file" class="player__button_upload">
+                </div>
+                <div class="player__toggle">
+                    <button onclick="playSound()" class="player__toggle_button player__toggle_start player__toggle_active"></button>
+                    <button onclick="stopSound()" class="player__toggle_button player__toggle_stop"></button>
+                </div>
+                <div class="player__button player_drag" title="Drag and Drop file"><div class="player_drag-border"></div></div>
+            </div>
+        </div>
 		
 		
 		
 		<!-- build:js scripts/main.js -->
-		<script src="js/script.js"></script>
+        <script src="js/jdataview.js"></script>
+        <script src="js/wavesurfer.min.js"></script>
+        <script src="js/script.js"></script>
 		<!-- endbuild -->
 	</body>
 </html>
