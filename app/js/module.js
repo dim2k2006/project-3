@@ -1,4 +1,5 @@
-var player = (function() {   
+var player = (function() {
+    window.AudioContext = window.AudioContext||window.webkitAudioContext;   
     var options = {
         context: new window.AudioContext(),
         source: null,
@@ -17,9 +18,7 @@ var player = (function() {
         reader: '',
         filename: null,
         playerContainer: $('.player'),
-        playerToggler: $('.player__toggle'),
-        autoTrigger: false,
-        timeOut: 0     
+        playerToggler: $('.player__toggle')   
     };
     
 
@@ -36,9 +35,7 @@ var player = (function() {
         options.playerContainer.removeClass('player__loading');
 
 
-        if (options.filename) {
-            $('#filename').html(options.filename);
-        }
+        
         
         if (options.metaTitle) {
             $('#meta-name').html(options.metaTitle);
@@ -53,11 +50,14 @@ var player = (function() {
         }
         
         if (!options.metaTitle && !options.metaArtist && !options.metaAlbum && !options.metaYear) {
-            $('#meta-name').html('no metadata');
+            if (options.filename) {
+                $('#meta-name').html(options.filename);
+            }
+        } else {
+            if (options.filename) {
+                $('#filename').html(options.filename);
+            }
         }
-
-        // options.autoTrigger = true;
-        // options.startButton.trigger('click');      
     });
         
 
@@ -68,21 +68,10 @@ var player = (function() {
             options.source = options.context.createBufferSource();
             options.source.buffer = options.audioBuffer;
             options.source.loop = false;
-            options.source.connect(options.context.destination);
-
-            if (options.autoTrigger) {
-                options.timeOut = 2000;
-            } else {
-                options.timeOut = 0;
-            }
-
-            setTimeout(function() {
-                options.source.start(0);
-                options.startButton.removeClass('player__toggle_active');
-                options.stopButton.addClass('player__toggle_active');
-            }, options.timeOut);
-
-            options.autoTrigger = false;
+            options.source.connect(options.context.destination);                        
+            options.source.start(0);
+            options.startButton.removeClass('player__toggle_active');
+            options.stopButton.addClass('player__toggle_active');
         });
 
 
