@@ -122,14 +122,16 @@ body {
 	top: -2px;
 	left: -2px;
 	background-repeat: no-repeat;
-	background-position: 56% 50%;
+	background-position: 50% 50%;
 }
 
 .player__toggle_start {
+	background-position: 56% 50%;
 	background-image: url(../images/play.png);
 }
 
 .player__toggle_stop {
+	background-position: 50% 50%;
 	background-image: url(../images/stop.png);
 }
 
