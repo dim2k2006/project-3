@@ -33,9 +33,6 @@ var player = (function() {
 
     options.wavesurfer.on('ready', function() {
         options.playerContainer.removeClass('player__loading');
-
-
-        
         
         if (options.metaTitle) {
             $('#meta-name').html(options.metaTitle);
